@@ -1,0 +1,12 @@
+schema: 1
+name: palworld
+display_name: Palworld
+description: Dedicated Palworld server (thijsvanloef/palworld-server-docker).
+image: thijsvanloef/palworld-server-docker
+default_tag: latest
+min_ram_mb: 8192
+ports:
+  - { container: 8211, host: 8211, proto: udp }
+env:
+  - { key: SERVER_NAME, default: "Has Games Palworld", description: "Public server name" }
+  - { key: PLAYERS, default: "16", description: "Maximum players" }

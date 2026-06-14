@@ -1,0 +1,13 @@
+schema: 1
+name: valheim
+display_name: Valheim
+description: Dedicated Valheim server (lloesche/valheim-server).
+image: lloesche/valheim-server
+default_tag: latest
+min_ram_mb: 4096
+ports:
+  - { container: 2456, host: 2456, proto: udp }
+  - { container: 2457, host: 2457, proto: udp }
+env:
+  - { key: SERVER_NAME, default: "Has Games Valheim", description: "Public server name" }
+  - { key: WORLD_NAME, default: "Dedicated", description: "World/save name" }

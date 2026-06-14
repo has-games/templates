@@ -1,0 +1,16 @@
+services:
+  {{ .StackName }}:
+    image: {{ .Image }}:{{ .Tag }}
+    container_name: hasgames-{{ .StackName }}
+    environment:
+      SERVER_NAME: "{{ .Env.SERVER_NAME }}"
+      WORLD_NAME: "{{ .Env.WORLD_NAME }}"
+      # Placeholder join password — per-stack secrets (set via DM) arrive with
+      # the /server set work. Change this before exposing the server.
+      SERVER_PASS: "changeme123"
+    ports:
+      - "2456-2457:2456-2457/udp"
+    volumes:
+      - ./config:/config
+      - ./data:/opt/valheim
+    restart: unless-stopped

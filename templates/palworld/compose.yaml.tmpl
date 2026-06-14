@@ -1,0 +1,15 @@
+services:
+  {{ .StackName }}:
+    image: {{ .Image }}:{{ .Tag }}
+    container_name: hasgames-{{ .StackName }}
+    environment:
+      SERVER_NAME: "{{ .Env.SERVER_NAME }}"
+      PLAYERS: "{{ .Env.PLAYERS }}"
+      # Placeholder admin password — per-stack secrets (set via DM) arrive with
+      # the /server set work. Change this before exposing the server.
+      ADMIN_PASSWORD: "changeme123"
+    ports:
+      - "8211:8211/udp"
+    volumes:
+      - ./data:/palworld
+    restart: unless-stopped

@@ -1,0 +1,11 @@
+schema: 1
+name: minecraft
+display_name: Minecraft (Java)
+description: Vanilla Minecraft Java Edition server (itzg/minecraft-server).
+image: itzg/minecraft-server
+default_tag: latest
+min_ram_mb: 2048
+ports:
+  - { container: 25565, host: 25565, proto: tcp }
+env:
+  - { key: MEMORY, default: "2G", description: "JVM heap size" }
