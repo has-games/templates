@@ -9,3 +9,7 @@ ports:
   - { container: 25565, host: 25565, proto: tcp }
 env:
   - { key: MEMORY, default: "2G", description: "JVM heap size" }
+# itzg ships an mc-monitor healthcheck that only reports healthy once the
+# server answers status pings — i.e. the world is loaded and joinable.
+ready:
+  type: healthcheck
