@@ -11,8 +11,9 @@ ports:
 env:
   - { key: SERVER_NAME, default: "Has Games Valheim", description: "Public server name" }
   - { key: WORLD_NAME, default: "Dedicated", description: "World/save name" }
-# UDP game, no healthcheck — detect readiness from the log line the server
-# prints once it registers with Steam and is joinable.
+# UDP game, no healthcheck — detect readiness from the log lines the server
+# prints once the world is loaded and it registers with Steam (joinable).
+# (Not "Accepting connection k_EResultOK" — that fires when a *player* connects.)
 ready:
   type: log
-  pattern: "Accepting connection k_EResultOK"
+  pattern: "Opened Steam server|Registering lobby"
