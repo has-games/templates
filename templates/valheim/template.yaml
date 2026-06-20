@@ -17,3 +17,5 @@ env:
 ready:
   type: log
   pattern: "Opened Steam server|Registering lobby"
+# Valheim joins by IP (fixed port), so show only the host IP in connect info.
+connect_ip_only: true
